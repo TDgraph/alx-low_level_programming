@@ -1,8 +1,8 @@
 #include "lists.h"
 
 /**
- * free_listint_safe - funtion that frees a linked list
- * @head: set pointer to the first node in the linked list
+ * free_listint_safe - free a linked list
+ * @h: set pointer to the first node in the linked list
  *
  * Return: then return the number of elements in the freed list
  */
