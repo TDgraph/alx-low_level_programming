@@ -1,60 +1,11 @@
-#include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
-
-char *create_buffer(char *file);
-void close_file(int fd);
+#include "file.h"
 
 /**
- * create_buffer - write a function that
- * allocates 1024 bytes for a buffer.
- * @file: let file buffer store chars.
- *
- * Return: Add pointer to the newly-allocated buffer.
- */
-char *create_buffer(char *file)
-{
-	char *buffer;
-
-	buffer = malloc(sizeof(char) * 1024);
-
-	if (buffer == NULL)
-	{
-		dprintf(STDERR_FILENO,
-			"Error: Cannot write to %s\n", file);
-		exit(99);
-	}
-
-	return (buffer);
-}
-/**
- * close_file - then closes the file descriptors.
- * @fd: this is the file descriptor to be closed.
- */
-void close_file(int fd)
-{
-	int c;
-
-	c = close(fd);
-
-	if (c == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Cannot close fd %d\n", fd);
-		exit(100);
-	}
-}
-/**
- * main - then write a function to
- * copy the contents of a file to another file.
- * @argc: represents number of arguments supplied to the program.
+ * main - prints the contents of a file to another file.
+ * @argc: simply the number of arguments supplied to the program.
  * @argv: An array of pointers to the arguments.
  *
- * Return: print 0 when successful.
- *
- * Description: Exit code 97 if the arguement count is incorrect
- *If the file_from does not exist or cannot be read - exit code 98.
- *If the file_to cannot be created or written to - exit code 99.
- *If the file_to or file_from cannot be closed - exit code 100.
+ * Return: 0 on success.
  */
 int main(int argc, char *argv[])
 {
@@ -76,29 +27,24 @@ int main(int argc, char *argv[])
 		if (from == -1 || r == -1)
 		{
 			dprintf(STDERR_FILENO,
-				"Error: Cannot read from file %s\n", argv[1]);
+				"Error: Can't read from file %s\n", argv[1]);
 			free(buffer);
 			exit(98);
 		}
-
 		w = write(to, buffer, r);
 		if (to == -1 || w == -1)
 		{
 			dprintf(STDERR_FILENO,
-				"Error: Cannot write to %s\n", argv[2]);
+				"Error: Can't write to %s\n", argv[2]);
 			free(buffer);
 			exit(99);
 		}
-
 		r = read(from, buffer, 1024);
 		to = open(argv[2], O_WRONLY | O_APPEND);
 
 	} while (r > 0);
-
 	free(buffer);
 	close_file(from);
 	close_file(to);
-
 	return (0);
 }
-
