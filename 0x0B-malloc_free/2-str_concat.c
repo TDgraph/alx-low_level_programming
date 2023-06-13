@@ -1,43 +1,44 @@
 #include "main.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
- * str_concat - concatenates two strings.
- * @s1: first string.
- * @s2: second string.
- *
- * Return: pointer of an array of chars
+ * str_concat - Fuction which concatenates two strings
+ * @s1: first string to concatenate
+ * @s2: second string to concatenate
+ * Return: Pointer to a new string created (Sucess), or NULL (Error)
  */
 char *str_concat(char *s1, char *s2)
 {
-	char *strout;
-	unsigned int i, j, k, limit;
+	int i, x, len, len1, len2;
+	char *res;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
+	len1 = len2 = 0;
 
-	for (i = 0; s1[i] != '\0'; i++)
-		;
-
-	for (j = 0; s2[j] != '\0'; j++)
-		;
-
-	strout = malloc(sizeof(char) * (i + j + 1));
-
-	if (strout == NULL)
+	if (s1 != NULL)
 	{
-		free(strout);
-		return (NULL);
+		i = 0;
+		while (s1[i++] != '\0')
+			len1++;
 	}
 
-	for (k = 0; k < i; k++)
-		strout[k] = s1[k];
+	if (s2 != NULL)
+	{
+		i = 0;
+		while (s2[i++] != '\0')
+			len2++;
+	}
 
-	limit = j;
-	for (j = 0; j <= limit; k++, j++)
-		strout[k] = s2[j];
+	len = len1 + len2;
+	res = (char *)malloc(sizeof(char) * (len + 1));
+	if (res == NULL)
+		return (NULL);
 
-	return (0);
+	for (i = 0; i < len1; i++)
+		res[i] = s1[i];
+
+	for (x = 0; x < len2; x++, i++)
+		res[i] = s2[x];
+	res[len] = '\0';
+
+	return (res);
 }
