@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6d99d6fcb6ce6a864ddccf356d38fc885506420a
 #include "main.h"
 /**
  * _strncat - concatenate two strings
@@ -11,6 +14,7 @@
  */
 char *_strncat(char *dest, char *src, int n)
 {
+<<<<<<< HEAD
 	int l;
 	int m;
 
@@ -27,6 +31,24 @@ char *_strncat(char *dest, char *src, int n)
 	m++;
 	}
 	dest[l] = '\0';
+=======
+	int y;
+	int z;
+
+	y = 0;
+	while (dest[y] != '\0')
+	{
+		y++;
+	}
+	z = 0;
+	while (z < n && src[z] != '\0')
+	{
+	dest[y] = src[z];
+	y++;
+	z++;
+	}
+	dest[y] = '\0';
+>>>>>>> 6d99d6fcb6ce6a864ddccf356d38fc885506420a
 	return (dest);
 }
 

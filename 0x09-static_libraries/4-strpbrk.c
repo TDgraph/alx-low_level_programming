@@ -7,6 +7,7 @@
  */
 char *_strpbrk(char *s, char *accept)
 {
+<<<<<<< HEAD
 	int o;
 
 	while (*s)
@@ -14,6 +15,15 @@ char *_strpbrk(char *s, char *accept)
 		for (o = 0; accept[o]; o++)
 		{
 		if (*s == accept[o])
+=======
+	int c;
+
+	while (*s)
+	{
+		for (c = 0; accept[c]; c++)
+		{
+		if (*s == accept[c])
+>>>>>>> 6d99d6fcb6ce6a864ddccf356d38fc885506420a
 		return (s);
 		}
 	s++;
@@ -21,4 +31,7 @@ char *_strpbrk(char *s, char *accept)
 
 return ('\0');
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6d99d6fcb6ce6a864ddccf356d38fc885506420a
