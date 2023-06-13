@@ -6,49 +6,49 @@
  * @width: width input
  * @height: height input
  * Return: pointer to 2 dim. array
+ *
  */
 
 int **alloc_grid(int width, int height)
 
 {
 
-	int **mee;
+	int **bot;
 
-	int x, y;
+	int y, z;
 
 	if (width <= 0 || height <= 0)
 		return (NULL);
+	bot = malloc(sizeof(int *) * height);
 
-	mee = malloc(sizeof(int *) * height);
 
-
-	if (mee == NULL)
+	if (bot == NULL)
 
 		return (NULL);
 
-	for (x = 0; x < height; x++)
+	for (y = 0; z < height; y++)
 	{
-		mee[x] = malloc(sizeof(int) * width);
+		bot[y] = malloc(sizeof(int) * width);
 
-		if (mee[x] == NULL)
+		if (bot[y] == NULL)
 		{
-			for (; x >= 0; x--)
-				free(mee[x]);
+			for (; y >= 0; y--)
+				free(bot[y]);
 
 
 
-			free(mee);
+			free(bot);
 			return (NULL);
 
 		}
 
 	}
-	for (x = 0; x < height; x++)
+	for (x = 0; y < height; y++)
 
 	{
 
-		for (y = 0; y < width; y++)
-			mee[x][y] = 0;
+		for (z = 0; z < width; y++)
+			bot[y][z] = 0;
 	}
-	return (mee);
+	return (bot);
 }
