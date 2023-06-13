@@ -2,16 +2,16 @@
 #include<stdlib.h>
 
 /**
- * str_conct _ ends of input added together for size
- * @t1: input to concatinate
- * @t2: 2nd input to concatenate
+ * str_concat - end of input added together for size
+ * @t1: input to concat
+ * @t2: 2nd input to concat
  * Return: concat of t1 and t2
  */
 
-char *str_conct(char *t1, char *t2)
+char *str_concat(char *t1, char *t2)
 
 {
-	char *conct;
+	char *concat;
 
 	int a, it;
 
@@ -31,24 +31,24 @@ char *str_conct(char *t1, char *t2)
 	while (t2[it] != '\0')
 		it++;
 
-	conct = malloc(sizeof(char) * (a + it + 1));
+	concat = malloc(sizeof(char) * (a + it + 1));
 
-	if (conct == NULL)
+	if (concat == NULL)
 		return (NULL);
 
 	a = it = 0;
 
 	while (t1[a] != '\0')
 	{
-		conct[a] = t1[a];
+		concat[a] = t1[a];
 		a++;
 	}
 	while (t2[it] != '\0')
 
 	{
-		conct[a] = t2[it];
+		concat[a] = t2[it];
 		a++, it++;
 	}
-	conct[a] = '\0'
-	return (conct);
+	concat[a] = '\0'
+	return (concat);
 }
