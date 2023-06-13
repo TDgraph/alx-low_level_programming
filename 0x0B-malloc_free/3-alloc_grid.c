@@ -13,42 +13,42 @@ int **alloc_grid(int width, int height)
 
 {
 
-	int **bot;
+	int **mee;
 
-	int y, z;
+	int x, y;
 
 	if (width <= 0 || height <= 0)
 		return (NULL);
-	bot = malloc(sizeof(int *) * height);
+	mee = malloc(sizeof(int *) * height);
 
 
-	if (bot == NULL)
+	if (mee == NULL)
 
 		return (NULL);
 
-	for (y = 0; z < height; y++)
+	for (x = 0; y < height; x++)
 	{
-		bot[y] = malloc(sizeof(int) * width);
+		mee[x] = malloc(sizeof(int) * width);
 
-		if (bot[y] == NULL)
+		if (mee[x] == NULL)
 		{
-			for (; y >= 0; y--)
-				free(bot[y]);
+			for (; x >= 0; x--)
+				free(mee[x]);
 
 
 
-			free(bot);
+			free(mee);
 			return (NULL);
 
 		}
 
 	}
-	for (x = 0; y < height; y++)
+	for (x = 0; x < height; x++)
 
 	{
 
-		for (z = 0; z < width; y++)
-			bot[y][z] = 0;
+		for (y = 0; y < width; y++)
+			mee[x][y] = 0;
 	}
-	return (bot);
+	return (mee);
 }
